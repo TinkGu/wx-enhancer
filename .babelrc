@@ -1,0 +1,21 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": [
+            "last 2 versions",
+            "ie >= 10"
+          ]
+        },
+        "loose": true,
+        "useBuiltIns": true
+      }
+    ],
+    "stage-2"
+  ],
+  "plugins": [
+    "transform-export-extensions"
+  ]
+}
