@@ -2,14 +2,15 @@
   "name": "wx-enhancer",
   "version": "1.0.0",
   "description": "Enhancers for wechat app with rx.js",
-  "main": "lib/index.js",
+  "main": "index.js",
   "scripts": {
+    "cppkg": "cp ./package.json lib/package.json",
     "clean": "rimraf lib",
     "build": "npm run clean && babel src --out-dir lib/ --source-maps",
-    "prerelease": "npm run build",
-    "release:patch": "npm run prerelease && npm version patch && npm publish && git push --follow-tags",
-    "release:minor": "npm run prerelease && npm version minor && npm publish && git push --follow-tags",
-    "release:major": "npm run prerelease && npm version major && npm publish && git push --follow-tags"
+    "prerelease:patch": "npm run build && npm version patch && cppkg",
+    "prerelease:minor": "npm run build && npm version minor && cppkg",
+    "prerelease:major": "npm run build && npm version major && cppkg",
+    "release": "npm publish && git push --follow-tags"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,9 @@
     "url": "https://github.com/TinkGu/wx-enhancer/issues"
   },
   "homepage": "https://github.com/TinkGu/wx-enhancer#readme",
+  "peerDependencies": {
+    "rxjs": "5.0.0"
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
@@ -43,7 +47,7 @@
     "eslint": "^4.11.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
-    "rimraf": "^2.6.2"
-  },
-  "dependencies": {}
+    "rimraf": "^2.6.2",
+    "rxjs": "5.0.0"
+  }
 }
